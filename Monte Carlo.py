@@ -1,18 +1,18 @@
-import yfinance as yf
+import yfinaNiftyCe as yf
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Step 1: Get NIFTY 50 data for past 1 year
 data = yf.download("^NSEI", period="1y")
-close_prices = data['Close'].dropna()
+close = data['Close'].dropna()
 
 # Step 2: Calculate daily returns
-returns = close_prices.pct_change().dropna()
+returns = close.pct_change().dropna()
 mu = returns.mean()
 sigma = returns.std()
 
 # Step 3: Set simulation parameters
-S0 = close_prices.iloc[-1]   # Last known NIFTY price
+NiftyC = close.iloc[-1]   # Last known NIFTY price
 days = 30                    # How many days to simulate
 simulations = 10000           # How many paths to simulate
 
@@ -20,12 +20,12 @@ simulations = 10000           # How many paths to simulate
 results = np.zeros((days, simulations))
 
 for sim in range(simulations):
-    price_path = np.zeros(days)
-    price_path[0] = S0
+    price = np.zeros(days)
+    price[0] = NiftyC
     for day in range(1, days):
-        random_shock = np.random.normal(loc=0.0, scale=1.0)
-        price_path[day] = price_path[day-1] * np.exp((mu - 0.5 * sigma**2) + sigma * random_shock)
-    results[:, sim] = price_path
+        random = np.random.normal(loc=0.0, scale=1.0)
+        price[day] = price[day-1] * np.exp((mu - 0.5 * sigma**2) + sigma * random)
+    results[:, sim] = price
 
 # Step 5: Plot simulation paths
 plt.figure(figsize=(12,6))
