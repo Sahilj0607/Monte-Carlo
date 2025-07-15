@@ -18,4 +18,4 @@ A graphical visualization of all simulated future paths.
 A statistical summary showing the expected minimum, maximum, average, and standard deviation of the NIFTY 50 price 30 days into the future.
 
 This model helps in understanding the probable risk and return over a short-term horizon and can assist traders, analysts, and investors in decision-making under uncertainty.
-![Uploading image.png…]()
+
