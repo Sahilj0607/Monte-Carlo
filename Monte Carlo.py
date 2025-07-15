@@ -33,8 +33,6 @@ plt.plot(results, color='grey', alpha=0.1)
 plt.title("Monte Carlo Simulation of NIFTY 50 (Next 30 Days)")
 plt.xlabel("Days Ahead")
 plt.ylabel("Simulated NIFTY 50 Price")
-plt.grid()
-plt.show()
 
 # Step 6: Show prediction range on last day
 final_prices = results[-1, :]
